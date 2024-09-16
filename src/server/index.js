@@ -31,5 +31,5 @@ writeToJson("../public/output/5.teamWOnTossWonMatch.json", teamWOnTossWonMatchDa
 writeToJson("../public/output/6.highestNofPlayerOfMatches.json", highestNofPlayerOfMatchData);
 writeToJson("../public/output/7strikeRateOfBatsMan.json", batsmanStrikeRateData);
 writeToJson("../public/output/8.highestNofTimesOnePlayerDismissAnother.json", playerDismissAnotherData);
-writeToJson("../public/output/9.bowlerWithBestEconomySuperOver.json",batsmanStrikeRateData);
+writeToJson("../public/output/9.bowlerWithBestEconomySuperOver.json",bowlerSuperOverEconomyData);
 
