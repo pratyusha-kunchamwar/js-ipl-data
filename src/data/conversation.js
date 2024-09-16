@@ -1,9 +1,12 @@
 const fs = require("fs");
+const path = require("path");
 const csv = require("csv-parser");
 
 const results = [];
+const csvFilePath = path.join(__dirname, "./inputFileName.csv");  
+const jsonFilePath = path.join(__dirname, "./outputFileName.json");
 
-fs.createReadStream("matches.csv")
+fs.createReadStream(csvFilePath)
   .pipe(csv())
   .on("data", (row) => {
     results.push(row);
@@ -11,7 +14,7 @@ fs.createReadStream("matches.csv")
   .on("end", () => {
     console.log("CSV file successfully processed.");
 
-    fs.writeFile("matches.json", JSON.stringify(results, null, 2), (err) => {
+    fs.writeFile(jsonFilePath, JSON.stringify(results, null, 2), (err) => {
       if (err) {
         console.error("Error writing to file:", err);
       } else {

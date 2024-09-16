@@ -1,9 +1,6 @@
-const matchesData = require("../data/matches.json");
-const fs = require("fs");
-
 // Find a player who has won the highest number of Player of the Match awards for each season
-function playerWithHighestNofPlayersOfMatch() {
-  let eachSeasonPlayerOfMatch= {};
+function playerWithHighestNofPlayersOfMatch(matchesData) {
+  let eachSeasonPlayerOfMatch = {};
   for (let match of matchesData) {
     let playerOfMatch = match.player_of_match;
     let season = match.season;
@@ -34,10 +31,4 @@ function playerWithHighestNofPlayersOfMatch() {
   }
   return highestNofPlayerOfMatch;
 }
-let playersHighestNofPlayerOfMatch = playerWithHighestNofPlayersOfMatch();
-
-//dump the code to json
-fs.writeFileSync(
-  "../public/output/highestNofPlayerOfMatches.json",
-  JSON.stringify(playersHighestNofPlayerOfMatch, null, 2)
-);
+module.exports = playerWithHighestNofPlayersOfMatch;

@@ -1,9 +1,5 @@
-const deliveriesData = require("../data/deliveries.json");
-const matchesData = require("../data/matches.json");
-const fs = require("fs");
-
 // Find the strike rate of a batsman for each season
-function strikeRateOfBatsman() {
+function strikeRateOfBatsman(matchesData, deliveriesData) {
   let batsmanInfo = {};
   let matchIdAndSeason = new Map();
   for (let match of matchesData) {
@@ -50,12 +46,4 @@ function strikeRateOfBatsman() {
 
   return batsmanStrikeRate;
 }
-
-let strikeRateOfBatsmanData = strikeRateOfBatsman();
-// console.log(strikeRateOfBatsmanData);
-
-//dumping code to json.
-fs.writeFileSync(
-  "../public/output/strikeRateOfBatsMan.json",
-  JSON.stringify(strikeRateOfBatsmanData, null, 2)
-);
+module.exports = strikeRateOfBatsman;

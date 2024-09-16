@@ -1,8 +1,5 @@
-const matchesData = require("../data/matches.json");
-const fs = require("fs");
-
 //Number of matches won per team per year in IPL.
-function matchesWonPerTeamPerYear() {
+function matchesWonPerTeamPerYear(matchesData) {
   let winnersPerTeam = {};
   for (let match of matchesData) {
     let winner = match.winner;
@@ -20,10 +17,4 @@ function matchesWonPerTeamPerYear() {
   }
   return winnersPerTeam;
 }
-let matchesWonEachTeamPerYear = matchesWonPerTeamPerYear();
-
-//dump code to json
-fs.writeFileSync(
-  "../public/output/2.matchesWonPerTeamPerYear.json",
-  JSON.stringify(matchesWonEachTeamPerYear, null, 2)
-);
+module.exports = matchesWonPerTeamPerYear;

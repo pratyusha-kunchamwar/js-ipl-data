@@ -1,8 +1,5 @@
-const deliveriesData = require("../data/deliveries.json");
-const fs = require("fs");
-
 //Find the highest number of times one player has been dismissed by another player
-function highestNofTimesOnePlayerDismissAnother() {
+function highestNofTimesOnePlayerDismissAnother(deliveriesData) {
   let playersInfo = {};
   for (let delivery of deliveriesData) {
     let dismissed = delivery.dismissal_kind;
@@ -19,7 +16,7 @@ function highestNofTimesOnePlayerDismissAnother() {
       playersInfo[key].count += 1;
     }
   }
-//finding highest One
+  //finding highest One
   let dismissPlayer = "";
   let count = 0;
   for (let players in playersInfo) {
@@ -30,10 +27,4 @@ function highestNofTimesOnePlayerDismissAnother() {
   }
   return { dismissPlayer: dismissPlayer, count: count };
 }
-let highestDismissPlayer = highestNofTimesOnePlayerDismissAnother();
-
-//for dumping file
-fs.writeFileSync(
-  "../public/output/highestNofTimesOnePlayerDismissAnother.json",
-  JSON.stringify(highestDismissPlayer, null, 2)
-);
+module.exports = highestNofTimesOnePlayerDismissAnother;

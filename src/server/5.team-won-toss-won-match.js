@@ -1,14 +1,11 @@
-const matchesData = require("../data/matches.json");
-const fs = require("fs");
-
 // Find the number of times each team won the toss and also won the match
-function teamWonTossWonMatch() {
+function teamWonTossWonMatch(matchesData) {
   let nofTimesTeamWin = {};
   for (let match of matchesData) {
     let winner = match.winner;
     let tossWinner = match.toss_winner;
 
-    if (winner === tossWinner) { 
+    if (winner === tossWinner) {
       if (!nofTimesTeamWin.hasOwnProperty(winner)) {
         nofTimesTeamWin[winner] = 0;
       }
@@ -17,7 +14,4 @@ function teamWonTossWonMatch() {
   }
   return nofTimesTeamWin;
 }
-let teamWOnTossWonMatchData= teamWonTossWonMatch();
-
-//dump code into jsonFile
-fs.writeFileSync("../public/output/teamWOnTossWonMatch.json", JSON.stringify(teamWOnTossWonMatchData, null, 2));
+module.exports = teamWonTossWonMatch;

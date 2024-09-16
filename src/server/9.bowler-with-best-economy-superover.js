@@ -1,8 +1,5 @@
-const deliveriesData = require("../data/deliveries.json");
-const fs = require("fs");
-
 // Find the bowler with the best economy in super overs
-function bowlerWithBestEconomySuPerOver() {
+function bowlerWithBestEconomySuPerOver(deliveriesData) {
   let bowlersData = {};
   for (let delivery of deliveriesData) {
     let {
@@ -21,9 +18,9 @@ function bowlerWithBestEconomySuPerOver() {
           nofBalls: 0,
         };
       }
-      if (legByRuns==="0" && noBallRuns === "0") {
-      bowlersData[bowler].totalRuns += Number(totalRuns);
-    }
+      if (legByRuns === "0" && noBallRuns === "0") {
+        bowlersData[bowler].totalRuns += Number(totalRuns);
+      }
       if (wideRuns === "0" && noBallRuns === "0") {
         bowlersData[bowler].nofBalls += 1;
       }
@@ -47,11 +44,4 @@ function bowlerWithBestEconomySuPerOver() {
 
   return bestEconomyBowlers;
 }
-let bestBowlerData = bowlerWithBestEconomySuPerOver();
-// console.log(bestBowlerData);
-
-//dumpCode to Json
-fs.writeFileSync(
-  "../public/output/bowlerWithBestEconomySuperOver.json",
-  JSON.stringify(bestBowlerData, null, 2)
-);
+module.exports = bowlerWithBestEconomySuPerOver;
