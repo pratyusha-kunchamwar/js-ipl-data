@@ -23,13 +23,13 @@ let playerDismissAnotherData = playerDismissAnother(deliveriesData);
 let bowlerSuperOverEconomyData = bowlerSuperOverEconomy(deliveriesData);
 
 //dumping data to json 
-writeToJson("../public/output/1.matchesPerYear.json", matchesInfo);
-writeToJson("../public/output/2.matchesWonPerTeamPerYear.json", matchesWonPerTeam);
-writeToJson("../public/output/3.extraRunsPerTeam.json", extraRuns);
-writeToJson("../public/output/4.economicalBowler.json", economicalBowlerData);
-writeToJson("../public/output/5.teamWOnTossWonMatch.json", teamWOnTossWonMatchData);
-writeToJson("../public/output/6.highestNofPlayerOfMatches.json", highestNofPlayerOfMatchData);
-writeToJson("../public/output/7strikeRateOfBatsMan.json", batsmanStrikeRateData);
-writeToJson("../public/output/8.highestNofTimesOnePlayerDismissAnother.json", playerDismissAnotherData);
-writeToJson("../public/output/9.bowlerWithBestEconomySuperOver.json",bowlerSuperOverEconomyData);
-
+const outputDir = "../public/output/";
+writeToJson(`${outputDir}1.matchesPerYear.json`, matchesInfo);
+writeToJson(`${outputDir}2.matchesWonPerTeamPerYear.json`, matchesWonPerTeam);
+writeToJson(`${outputDir}3.extraRunsPerTeam.json`, extraRuns);
+writeToJson(`${outputDir}4.economicalBowler.json`, economicalBowlerData);
+writeToJson(`${outputDir}5.teamWOnTossWonMatch.json`, teamWOnTossWonMatchData);
+writeToJson(`${outputDir}6.highestNofPlayerOfMatches.json`, highestNofPlayerOfMatchData);
+writeToJson(`${outputDir}7.strikeRateOfBatsMan.json`, batsmanStrikeRateData);
+writeToJson(`${outputDir}8.highestNofTimesOnePlayerDismissAnother.json`, playerDismissAnotherData);
+writeToJson(`${outputDir}9.bowlerWithBestEconomySuperOver.json`,bowlerSuperOverEconomyData);
