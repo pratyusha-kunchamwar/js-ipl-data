@@ -20,15 +20,12 @@ function highestNofTimesOnePlayerDismissAnother(deliveriesData) {
     return player;
   }, {});
   //finding highest dismiss player
-  let player = "";
-  let maxCount = 0;
-  Object.keys(playerDismissedData).forEach((key) => {
-    let count = playerDismissedData[key].count;
-    if (count > maxCount) {
-      player = key;
-      maxCount = count;
+  let player = Object.keys(playerDismissedData).reduce((maxKey, currentKey) => {
+    if (playerDismissedData[currentKey].count > playerDismissedData[maxKey].count) {
+      maxKey = currentKey;
     }
+    return maxKey;
   });
-  return { [player]: maxCount };
+  return { [player]: playerDismissedData[player].count };
 }
 module.exports = highestNofTimesOnePlayerDismissAnother;
