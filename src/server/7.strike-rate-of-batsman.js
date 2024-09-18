@@ -1,6 +1,6 @@
 // Find the strike rate of a batsman for each season
 function strikeRateOfBatsman(matchesData, deliveriesData) {
-  //taking match ids ,season in set
+  //taking match ids ,season in Map
   let matchIdAndSeasons = new Map(
     matchesData.map((match) => {
       return [match.id, match.season];
@@ -15,6 +15,7 @@ function strikeRateOfBatsman(matchesData, deliveriesData) {
       wide_runs: wideRuns,
       noball_runs: noBallRuns,
     } = delivery;
+
     let season = matchIdAndSeasons.get(deliveryId);
     if (!batsmanStats.hasOwnProperty(season)) {
       batsmanStats[season] = {};
@@ -38,13 +39,13 @@ function strikeRateOfBatsman(matchesData, deliveriesData) {
     //to iterate each season
     let batsmanSeason = batsmanInfo[season];
     Object.keys(batsmanSeason).forEach((player) => {
-      let runs = batsmanInfo[season][player].totalRuns;
-      let ballsFaced = batsmanInfo[season][player].ballsFaced;
+      let runs = batsmanSeason[player].totalRuns;
+      let ballsFaced = batsmanSeason[player].ballsFaced;
       let strickRate = Infinity;
       if (ballsFaced > 0) {
         strickRate = (runs / ballsFaced) * 100;
       }
-      batsmanInfo[season][player].strickRate = strickRate;
+      batsmanSeason[player].strickRate = strickRate;
     });
   });
   return batsmanInfo;
