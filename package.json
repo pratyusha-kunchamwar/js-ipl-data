@@ -11,6 +11,5 @@
   "description": "",
   "dependencies": {
     "csv-parser": "^3.0.0",
-    "papaparse": "^5.4.1"
   }
 }
